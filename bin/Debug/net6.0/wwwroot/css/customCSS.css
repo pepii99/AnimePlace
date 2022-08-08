@@ -1,0 +1,451 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body, html {
+
+    
+}
+
+body {
+    /*font-family: 'Inter', sans-serif;*/
+}
+#nav-bar {
+    background-color: rgba(29, 29, 54, .5)
+}
+
+
+
+.left {
+    background-color: #2ecc71;
+    text-align: center;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0px;
+    width: 75%;
+    overflow-y: scroll;
+}
+
+.span3 {
+    height: 60px !important;
+    overflow: scroll;
+    
+}
+.panel-heading {
+    
+    display: block;
+    max-block-size: 300px;
+    overflow-y: scroll !important;
+    text-overflow: clip;
+}
+
+h1, h2, h3, h4 {
+    margin-left: 150px;
+}
+
+.content-header {
+    margin-top: 0;
+}
+
+.animes-container {
+    row-gap: 20px;
+    column-gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 1262px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.all-anime-img {
+    /*max-width: 100%;*/
+    width: 185px;
+    height: 265px;
+    /*height: auto;*/
+    margin-bottom: 20px;
+}
+
+/*Single Page details*/
+.anime-details {
+    display: grid;
+    grid-template-columns: 240px auto;
+    grid-gap: 30px;
+    /*grid-template-rows: 345px 1fr 300px;*/
+    width: 1262px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.anime-container {
+    width: 1262px;
+    margin: 0 auto;
+}
+
+.anime-content {
+    display: grid;
+    grid-template-columns: 240px auto;
+    grid-gap: 30px;
+}
+
+.single-anime-cover {
+    width: 240px;
+    height: 345px;
+    margin-top: -130px;
+}
+
+img {
+    border-radius: 3px;
+}
+
+.single-anime-name {
+    font-size: 32px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    letter-spacing: -0.5px;
+    margin-left: 0;
+}
+
+.single-anime-sypnosis {
+    font-size: 20px;
+    grid-column: 2 / span 1;
+    grid-row: 1/ span 1;
+    font-size: 19px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.single-anime-alternative {
+    margin-left: 35px;
+    font-size: 13px;
+}
+
+.banner {
+    /*background-position: 50% 35%;*/
+    width: 100%;
+    height: 330px;
+    border-radius: 0;
+    margin-top: -60px;
+}
+
+.single-character-banner {
+    width: 100%;
+    height: 210px;
+    border-radius: 0;
+    margin-top: -60px;
+    background-color: rgba(0, 1, 8, .6);
+}
+
+.single-character-image {
+    width: 200px;
+    height: 300px;
+    margin-top: -80px;
+}
+
+.single-character-content {
+    width: 1262px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px auto;
+    
+}
+
+.single-character-details {
+    font-size: 16px;
+    margin: 40px 20px;
+    font-style: normal;
+}
+
+
+#single-character-name {
+    margin: 20px 20px;
+    
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: auto 30px;
+    margin-top: 15px;
+    grid-gap: 15px;
+}
+
+
+
+
+
+.add-list {
+    background-color: #42a4f5;
+    font-size: 14px;
+    color: white;
+}
+.favorite {
+    padding: 0;
+    width: 30px;
+    background-color: #ff4d4d;
+    border-radius: 4px;
+}
+.favorite-icon {
+    stroke: black;
+    fill: #F0F8FF;
+    width: 22px;
+    height: 22px;
+    padding-bottom: 3px;
+}
+
+.characters-title {
+    display:inline-block;
+    font-size: 18px;
+    margin-left: 0px;
+    margin-bottom: 25px;
+    color: whitesmoke;
+}
+
+.characters {
+    display: inline-block;
+    padding: 15px 15px;
+    border: solid 0.2px;
+    border-radius: 3px;
+    background-color:rgba(14, 34, 76, 0.8); 
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    row-gap: 15px;
+    
+}
+
+.character {
+    display: grid;
+    
+    grid-template-columns: 52px auto;
+    background-color: rgba(21, 41, 76, 0.9)
+    
+}
+
+.character-img {
+    width: 52px;
+    height: 72px;
+}
+
+#character-name {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.character-details {
+    margin-left: 6px;
+    color: darkgray;
+}
+
+.staff {
+    font-size: 10px;
+    margin-top: 20px;
+    margin-left: 0;
+}
+
+.character-role {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.profile-container {
+    width: 1262px;
+    margin: 0 auto;
+}
+
+.profile-header{
+    display:grid;
+    grid-template-columns: 240px 300px 1fr;
+
+    gap: 30px;
+
+}
+
+.profile-picture-img {
+    width: 240px;
+    margin-top: -100px;
+}
+
+.profile-banner {
+    width: 100%;
+    height: 210px;
+    border-radius: 0;
+    margin-top: -60px;
+    background-color: rgba(0, 1, 8, .6);
+}
+
+.profile-shorcuts {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row nowrap;
+    margin-left: 300px;
+    background-color: dimgray;
+}
+
+.anime-overview {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-anime-list-details {
+    display: flex;
+    font-size: 18px;
+}
+
+.latest-activities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 15px;
+    column-gap: 20px;
+}
+
+.anime-activity {
+    display: grid;
+    grid-template-columns: 70px auto;
+    gap: 10px;
+}
+
+.recommendations {
+    margin-top: 20px;
+}
+
+.characters-recommendation {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.anime-activity-img {
+    width: 70px;
+}
+
+.add-list-dropdown {
+    display: inline-block;
+}
+
+    .add-list-dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+.add-list-button {
+    height: 30px;
+    font-size: 16px;
+    padding: 0;
+    text-align: center;
+    border-radius: 0;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.add-watching {
+    font-size: 13px;
+}
+
+.add-completed {
+    font-size: 13px;
+}
+
+.add-planning {
+    font-size: 13px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    font-size: 5px;
+    background-color: black;
+    min-width: 195px;
+    
+    padding: 0;
+    /*
+    
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+    height: 30px;
+    font-size: 16px;
+    padding: 0;*/
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.sidebar-content > * {
+    padding: 8px 8px;
+    background-color: gray;
+    
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 20px;
+    
+}
+
+.reccomendation-anime-img {
+    width: 150px;
+    height: 224px;
+}
+
+.watching-list-container{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.completed-list-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 20px;
+}
+
+.plantowatch-list-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.anime-list-img {
+    width: 157px;
+    height: 224px;
+}
