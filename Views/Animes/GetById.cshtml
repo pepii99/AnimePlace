@@ -10,6 +10,12 @@
 
 <body>
     <div class="anime-details-wrapper">
+        <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary edit-button">
+        Edit
+    </a>
+    <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary delete-button">
+        Delete
+    </a>
         <div class="anime-details">
             <div>
                 <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-anime-cover">
@@ -136,13 +142,9 @@
             </div>
 
         </div>
+        
     </section>
-    <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">
-        Edit
-    </a>
-    <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary">
-        Delete
-    </a>
+    
 </body>
 
 @section Scripts {

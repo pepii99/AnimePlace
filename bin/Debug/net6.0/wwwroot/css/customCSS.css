@@ -47,6 +47,7 @@ h1, h2, h3, h4 {
 
 .content-header {
     margin-top: 0;
+    
 }
 
 .animes-container {
@@ -56,7 +57,11 @@ h1, h2, h3, h4 {
     grid-template-columns: repeat(6, 1fr);
     width: 1262px;
     margin: 0 auto;
-    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.animes-container-wrapper {
+    background-color: rgba(8, 18, 46, 0.9);
 }
 
 .all-anime-img {
@@ -75,11 +80,13 @@ h1, h2, h3, h4 {
     /*grid-template-rows: 345px 1fr 300px;*/
     width: 1262px;
     margin: 0 auto;
+    padding-bottom: 25px;
 }
 
 .anime-container {
     background-color: rgba(8, 18, 46, 0.9);
     height: 1000px;
+    padding-top: 20px;
     
 }
 
@@ -140,7 +147,7 @@ img {
     height: 210px;
     border-radius: 0;
     margin-top: -60px;
-    background-color: rgba(0, 1, 8, .6);
+    background-color: rgba(0, 10, 37, 0.9);
 }
 
 .single-character-image {
@@ -155,6 +162,12 @@ img {
     display: grid;
     grid-template-columns: 200px auto;
     
+    
+}
+
+.single-character-wrapper {
+    background-color: rgba(8, 18, 46, 0.9);
+    color: lightgray;
 }
 
 .single-character-details {
@@ -171,6 +184,7 @@ img {
 .anime-details-wrapper{
     background-color: rgba(0, 10, 37, 0.9);
     color: lightgrey;
+    
 }
 
 #single-character-name {
@@ -252,6 +266,7 @@ img {
 #character-name {
     font-size: 15px;
     margin-bottom: 0;
+    margin-top: 2px;
 }
 .character-details {
     margin-left: 6px;
@@ -267,6 +282,7 @@ img {
     margin-top: 20px;
     margin-left: 0;
 }
+
 
 .character-role {
     font-size: 10px;
@@ -350,7 +366,7 @@ img {
 .characters-recommendation {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 250px 1fr;
+    grid-template-rows: 250px 240px;
     grid-gap: 25px;
 }
 
@@ -443,13 +459,18 @@ img {
     background-color: #3e8e41;
 }
 
-
-.sidebar-content > * {
-    padding: 8px 8px;
+.sidebar-content {
     background-color: rgba(18, 29, 49, 1);
-    color: lightgray;
-    padding: 7px 10px;
+    font-size: 14px;
 }
+
+    .sidebar-content > * {
+        padding: 4px 8px;
+        background-color: rgba(21, 41, 76, 0.9);
+        color: lightgray;
+        margin: 17px 15px;
+        border-radius: 3px;
+    }
 
 .recommendations-grid {
     display: grid;
@@ -487,5 +508,50 @@ img {
 .related-anime {
     margin-left: 272px;
     color: lightgray;
-    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.genres {
+/*    color: lightgray;
+    margin-left: 900px;
+    margin-top: -10px;
+    margin-bottom: 15px;*/
+}
+
+.genre-link {
+    /*color: lightgray;*/
+    /*    background-color: red;*/
+    /*border: 10px solid rgba(18, 29, 49, 1);
+    background-color: rgba(18, 29, 49, 1);
+    border-radius: 85px;*/
+}
+
+.genres-title {
+    margin-bottom: 10px;
+}
+
+.edit-button {
+    position: absolute;
+    right: 40px;
+    top: 100px;
+    
+}
+
+.delete-button {
+    position: absolute;
+    right: 40px;
+    top: 140px;
+}
+
+#footer-class {
+    background-color: rgba(0, 10, 37, 0.9);
+    border-top: 0 !important;
+}
+
+
+.character-related {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 30px;
+
 }

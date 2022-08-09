@@ -6,48 +6,62 @@
 @inject UserManager<ApplicationUser> userManager
 
 <div class="single-character-banner"></div>
-<div class="single-character-content">
+<div class="single-character-wrapper">
+    <div class="single-character-content">
+        
+        <img src="~/img/Characters/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-character-image">
+        <div>
+            <h3 id="single-character-name">@Model.Name</h3>
+            <h4 class="single-character-details">@Model.Details</h4>
+        </div>
 
-    <img src="~/img/Characters/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-character-image">
-    <div>
-        <h3 id="single-character-name">@Model.Name</h3>
-        <h4 class="single-character-details">@Model.Details</h4>
+        <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
+        
+        
     </div>
-    
-    <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
+    <div class="wrap-character-related">
+    <div class="character-related">
+            @foreach (var anime in @Model.Animes)
+            {
+                <div class="character-related-anime">
+                    <a asp-controller="Animes" asp-action="GetById" asp-route-id="@anime.Id"><img src="~/img/Animes/@(anime.ImageUrl).jpg" alt="@anime.Name" class="character-related-img"/>
+                        </a>
+                 </div>
+            }
+        </div>
+        </div>
 </div>
-
 
 
 
 @section Scripts {
     <script>
-const AddCharacterToFavorites = () => {
-    let element = $("#character-favorites-button");
-    //console.log(element);
-    
-   
+        const AddCharacterToFavorites = () => {
+            let element = $("#character-favorites-button");
+            //console.log(element);
 
-    $.ajax({
-        type: 'POST',
-        url: '/api/Favorites/@Model.CharacterId',
-        
-         
-        
-        
 
-        success: function() {
-            if ($(element)[0].innerHTML == "Add to favorites") {
-                element[0].innerHTML = "Remove from favorites";
-            } else {
-                element[0].innerHTML = "Add to favorites";
-            }
-            
-        },
-        
-        
-    
-    })
-}
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/Favorites/@Model.CharacterId',
+
+
+
+
+
+                success: function() {
+                    if ($(element)[0].innerHTML == "Add to favorites") {
+                        element[0].innerHTML = "Remove from favorites";
+                    } else {
+                        element[0].innerHTML = "Add to favorites";
+                    }
+
+                },
+
+
+
+            })
+        }
     </script>
 }

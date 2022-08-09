@@ -138,14 +138,14 @@ namespace AnimePlace.Controllers
         [Route("animes/id")]
         public IActionResult GetById(int id)
         {
-            SingleAnimeViewModel anime = this.animesService.GetById(id);
+            SingleAnimeViewModel anime = animesService.GetById(id);
 
             if (anime == null)
             {
                 return this.NotFound();
             }
 
-            anime.Characters = this.animesService.GetAllForAnime(id);
+            anime.Characters = animesService.GetAllForAnime(id);
 
 
 

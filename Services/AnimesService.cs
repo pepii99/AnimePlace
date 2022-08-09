@@ -171,7 +171,7 @@ namespace AnimePlace.Services
 
             var animeQuery = this.GetQueryableAnime(id);
 
-            var test = animeQuery.Select(x => x).FirstOrDefault();
+            //var test = animeQuery.Select(x => x).FirstOrDefault();
 
             var result = animeQuery.Select(x => new SingleAnimeViewModel
             {

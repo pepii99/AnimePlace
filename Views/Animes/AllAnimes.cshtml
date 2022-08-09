@@ -25,8 +25,9 @@
 
 }
 </div>*@
-
+<div class="animes-container-wrapper">
 <div class="animes-container">
+    
     @foreach(var anime in this.Model.Animes)
     {
     <div>
@@ -42,8 +43,8 @@
   </div>
 
     }
-
+    </div>
 </div>
 
 
-<partial name="_PagingPartial" model="@Model"></partial>
+@*<partial name="_PagingPartial" model="@Model"></partial>*@

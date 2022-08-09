@@ -11,6 +11,8 @@ namespace AnimePlace.Services.Contracts
 
         public Task AddToFavorites(int id, string userId);
 
+        public ICollection<AnimeListViewModel> GetAnimesForCharacter(int id);
+
         //public Character GetCharacter(int id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AnimePlace.Models;
+using AnimePlace.Models.ViewModels;
 using AnimePlace.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,14 +28,16 @@ namespace AnimePlace.Controllers
                 return NotFound();
             }
 
-            var view = charactersService.GetById(id);
+            CharacterViewModel characterView = charactersService.GetById(id);
 
-            if(view == null)
+            if(characterView == null)
             {
                 return NotFound();
             }
 
-            return View(view);
+            characterView.Animes = charactersService.GetAnimesForCharacter(id);
+
+            return View(characterView);
         }
 
         // Adds character to user's favorites (no limits yet)

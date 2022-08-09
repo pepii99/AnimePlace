@@ -47,6 +47,7 @@ h1, h2, h3, h4 {
 
 .content-header {
     margin-top: 0;
+    
 }
 
 .animes-container {
@@ -56,7 +57,11 @@ h1, h2, h3, h4 {
     grid-template-columns: repeat(6, 1fr);
     width: 1262px;
     margin: 0 auto;
-    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.animes-container-wrapper {
+    background-color: rgba(8, 18, 46, 0.9);
 }
 
 .all-anime-img {
@@ -142,7 +147,7 @@ img {
     height: 210px;
     border-radius: 0;
     margin-top: -60px;
-    background-color: rgba(0, 1, 8, .6);
+    background-color: rgba(0, 10, 37, 0.9);
 }
 
 .single-character-image {
@@ -156,6 +161,13 @@ img {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 200px auto;
+    margin-bottom: 100px;
+}
+
+.single-character-wrapper {
+    background-color: rgba(8, 18, 46, 0.9);
+    color: lightgray;
+    height: 800px;
     
 }
 
@@ -255,6 +267,7 @@ img {
 #character-name {
     font-size: 15px;
     margin-bottom: 0;
+    margin-top: 2px;
 }
 .character-details {
     margin-left: 6px;
@@ -516,4 +529,41 @@ img {
 
 .genres-title {
     margin-bottom: 10px;
+}
+
+.edit-button {
+    position: absolute;
+    right: 40px;
+    top: 100px;
+    
+}
+
+.delete-button {
+    position: absolute;
+    right: 40px;
+    top: 140px;
+}
+
+#footer-class {
+    background-color: rgba(0, 10, 37, 0.9);
+    border-top: 0 !important;
+}
+
+
+.character-related {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+     width: 1262px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.character-related-img {
+    width: 200px;
+    height: 300px;
+}
+
+.wrap-character-related {
+    background-color: rgba(0, 10, 37, 0.9);
 }

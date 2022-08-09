@@ -13,5 +13,7 @@
         public string Voice { get; set; }
 
         public string Role { get; set; }
+
+        public ICollection<AnimeListViewModel> Animes { get; set; }
     }
 }
