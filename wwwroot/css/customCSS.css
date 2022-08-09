@@ -71,18 +71,24 @@ h1, h2, h3, h4 {
 .anime-details {
     display: grid;
     grid-template-columns: 240px auto;
-    grid-gap: 30px;
+    grid-gap: 15px;
     /*grid-template-rows: 345px 1fr 300px;*/
     width: 1262px;
     margin: 0 auto;
-    margin-bottom: 40px;
+    padding-bottom: 25px;
 }
 
 .anime-container {
+    background-color: rgba(8, 18, 46, 0.9);
+    height: 1000px;
+    padding-top: 20px;
+    
+}
+
+.anime-container-wrapper {
     width: 1262px;
     margin: 0 auto;
 }
-
 .anime-content {
     display: grid;
     grid-template-columns: 240px auto;
@@ -100,17 +106,17 @@ img {
 }
 
 .single-anime-name {
-    font-size: 32px;
+    font-size: 28px;
     display: inline-block;
     width: fit-content;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
     letter-spacing: -0.5px;
     margin-left: 0;
 }
 
 .single-anime-sypnosis {
-    font-size: 20px;
+    font-size: 14px;
     grid-column: 2 / span 1;
     grid-row: 1/ span 1;
     font-size: 19px;
@@ -119,7 +125,7 @@ img {
 }
 
 .single-anime-alternative {
-    margin-left: 35px;
+    margin-left: 10px;
     font-size: 13px;
 }
 
@@ -159,10 +165,19 @@ img {
     font-style: normal;
 }
 
+.single-anime-title-sypnosis {
+    
+    padding: 10px 10px
+}
+
+.anime-details-wrapper{
+    background-color: rgba(0, 10, 37, 0.9);
+    color: lightgrey;
+    
+}
 
 #single-character-name {
     margin: 20px 20px;
-    
 }
 
 .actions {
@@ -199,16 +214,21 @@ img {
     display:inline-block;
     font-size: 18px;
     margin-left: 0px;
-    margin-bottom: 25px;
+    margin-bottom: 17px;
     color: whitesmoke;
 }
 
 .characters {
     display: inline-block;
     padding: 15px 15px;
-    border: solid 0.2px;
     border-radius: 3px;
-    background-color:rgba(14, 34, 76, 0.8); 
+    
+    background-color: rgba(18, 29, 49, 1);
+    /*0, 10, 37, 0.9*/
+}
+
+#character-name {
+    color: lightgray;
 }
 
 .characters-grid {
@@ -217,7 +237,6 @@ img {
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 20px;
     row-gap: 15px;
-    
 }
 
 .character {
@@ -242,11 +261,16 @@ img {
     color: darkgray;
 }
 
+.character-details a:hover {
+    text-decoration: none;
+}
+
 .staff {
     font-size: 10px;
     margin-top: 20px;
     margin-left: 0;
 }
+
 
 .character-role {
     font-size: 10px;
@@ -313,13 +337,25 @@ img {
 }
 
 .recommendations {
-    margin-top: 20px;
+    color: lightgray;
+    padding: 15px 15px;
+    border-radius: 3px;
+    background-color: rgba(18, 29, 49, 1);
+}
+
+.recommendations-title {
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 17px;
+    margin-left: 0px;
+    color: whitesmoke;
 }
 
 .characters-recommendation {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 250px 240px;
+    grid-gap: 25px;
 }
 
 .anime-activity-img {
@@ -411,22 +447,29 @@ img {
     background-color: #3e8e41;
 }
 
-.sidebar-content > * {
-    padding: 8px 8px;
-    background-color: gray;
-    
+.sidebar-content {
+    background-color: rgba(18, 29, 49, 1);
+    font-size: 14px;
 }
+
+    .sidebar-content > * {
+        padding: 4px 8px;
+        background-color: rgba(21, 41, 76, 0.9);
+        color: lightgray;
+        margin: 17px 15px;
+        border-radius: 3px;
+    }
 
 .recommendations-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-column-gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 30px;
     
 }
 
 .reccomendation-anime-img {
-    width: 150px;
-    height: 224px;
+    width: 115px;
+    height: 160px;
 }
 
 .watching-list-container{
@@ -448,4 +491,29 @@ img {
 .anime-list-img {
     width: 157px;
     height: 224px;
+}
+
+.related-anime {
+    margin-left: 272px;
+    color: lightgray;
+    margin-bottom: 20px;
+}
+
+.genres {
+/*    color: lightgray;
+    margin-left: 900px;
+    margin-top: -10px;
+    margin-bottom: 15px;*/
+}
+
+.genre-link {
+    /*color: lightgray;*/
+    /*    background-color: red;*/
+    /*border: 10px solid rgba(18, 29, 49, 1);
+    background-color: rgba(18, 29, 49, 1);
+    border-radius: 85px;*/
+}
+
+.genres-title {
+    margin-bottom: 10px;
 }

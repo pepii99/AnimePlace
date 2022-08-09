@@ -9,7 +9,7 @@
 </div>
 
 <body>
-    <section class="anime-container">
+    <div class="anime-details-wrapper">
         <div class="anime-details">
             <div>
                 <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-anime-cover">
@@ -33,98 +33,109 @@
 
             </div>
 
-            <div>
+            <div class="single-anime-title-sypnosis">
                 <h1 class="single-anime-name">@Model.Name</h1>
                 <h3 class="single-anime-alternative">@Model.AlternativeName</h3>
                 <p class="single-anime-sypnosis">@Model.Sypnosis</p>
             </div>
         </div>
-        @if (@Model.RelatedAnime.AnimeId > 0)
-        {
-            <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
-        }
-        <div class="genres">
-            @foreach (var genre in @Model.Genres)
+    </div>
+    <section class="anime-container">
+        <div class="anime-container-wrapper">
+            @if (@Model.RelatedAnime.AnimeId > 0)
             {
-                <a class="genre-link">@genre.Name</a>
+                <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
             }
-        </div>
-        <div class="anime-content">
-            <div class="sidebar-content">
-                <div class="sidebar-type">
-                    <div class="type-title">Type</div>
-                    <div class="type-content">@Model.Type</div>
+           
+            @*<div class="genres">
+                @foreach (var genre in @Model.Genres)
+                {
+                    <a class="genre-link">@genre.Name</a>
+                }
+            </div>*@
+            <div class="anime-content">
+                <div class="sidebar-content">
+                    <div class="sidebar-type">
+                        <div class="type-title">Type</div>
+                        <div class="type-content">@Model.Type</div>
+                    </div>
+                    <div class="sidebar-episodes">
+                        <div class="epidoes-title">Episodes</div>
+                        <div class="episodes-content">@Model.Episodes</div>
+                    </div>
+                    <div class="sidebar-status">
+                        <div class="status-title">Status</div>
+                        <div class="status-content">@Model.Status</div>
+                    </div>
+                    <div class="sidebar-aired">
+                        <div class="aired-title">Aired</div>
+                        <div class="aired-content">@Model.Aired</div>
+                    </div>
+                    <div class="sidebar-favorites">
+                        <div class="favorites-title">Favorites</div>
+                        <div class="favorites-content">@Model.Favorites</div>
+                    </div>
+                    <div class="sidebar-score">
+                        <div class="score-title">Score</div>
+                        <div class="score-content">@Model.Score</div>
+                    </div>
+                    <div class="sidebar-source">
+                        <div class="source-title">Source</div>
+                        <div class="source-content">@Model.Source</div>
+                    </div>
+                    <div class="sidebar-rating">
+                        <div class="rating-title">Rating</div>
+                        <div class="rating-content">@Model.Rating</div>
+                    </div>
+                    <div class="genres">
+                        <div class="genres-title">Genres</div>
+                            @foreach (var genre in @Model.Genres)
+                            {
+                                <div class="genre-link">@genre.Name</div>
+                            }
+                     </div>
                 </div>
-                <div class="sidebar-episodes">
-                    <div class="epidoes-title">Episodes</div>
-                    <div class="episodes-content">@Model.Episodes</div>
-                </div>
-                <div class="sidebar-status">
-                    <div class="status-title">Status</div>
-                    <div class="status-content">@Model.Status</div>
-                </div>
-                <div class="sidebar-aired">
-                    <div class="aired-title">Aired</div>
-                    <div class="aired-content">@Model.Aired</div>
-                </div>
-                <div class="sidebar-favorites">
-                    <div class="favorites-title">Favorites</div>
-                    <div class="favorites-content">@Model.Favorites</div>
-                </div>
-                <div class="sidebar-score">
-                    <div class="score-title">Score</div>
-                    <div class="score-content">@Model.Score</div>
-                </div>
-                <div class="sidebar-source">
-                    <div class="source-title">Source</div>
-                    <div class="source-content">@Model.Source</div>
-                </div>
-                <div class="sidebar-rating">
-                    <div class="rating-title">Rating</div>
-                    <div class="rating-content">@Model.Rating</div>
-                </div>
-            </div>
-            <div class="characters-recommendation">
-                <div class="characters">
-                    <h3 class="characters-title">Characters</h3>
-                    <div class="characters-grid">
-                        @foreach (var character in @Model.Characters)
-                        {
+                <div class="characters-recommendation">
+                    <div class="characters">
+                        <h3 class="characters-title">Characters</h3>
+                        <div class="characters-grid">
+                            @foreach (var character in @Model.Characters)
+                            {
 
-                            <div class="character">
+                                <div class="character">
 
-                                <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
-                                <div class="character-details">
-                                    <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
-                                    <p class="character-role">@character.Role</p>
-                                    <div class="staff">
-                                        <div>V.A: @character.Voice</div>
+                                    <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
+                                    <div class="character-details">
+                                        <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
+                                        <p class="character-role">@character.Role</p>
+                                        <div class="staff">
+                                            <div>V.A: @character.Voice</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
+
+                    </div>
+                    <div class="recommendations">
+                        <h3 class="recommendations-title">Recommendations</h3>
+                        <div class="recommendations-grid">
+                            @foreach (var recc in @Model.Recommendations)
+                            {
+                                <div class="reccomendation-item">
+                                    <a asp-controller="Animes" asp-action="GetById" asp-route-id="@recc.AnimeId"><img src="~/img/Animes/@(recc.AnimeImageUrl).jpg" alt="@recc.AnimeName" class="reccomendation-anime-img" /></a>
+                                </div>
+                            }
+                        </div>
                     </div>
 
                 </div>
-                <div class="recommendations">
-                    <h5>Recommendations</h5>
-                    <div class="recommendations-grid">
-                        @foreach (var recc in @Model.Recommendations)
-                        {
-                            <div class="reccomendation-item">
-                                <a asp-controller="Animes" asp-action="GetById" asp-route-id="@recc.AnimeId"><img src="~/img/Animes/@(recc.AnimeImageUrl).jpg" alt="@recc.AnimeName" class="reccomendation-anime-img" /></a>
-                            </div>
-                        }
-                    </div>
-                </div>
+
+
 
             </div>
 
-
-
         </div>
-
-
     </section>
     <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">
         Edit
