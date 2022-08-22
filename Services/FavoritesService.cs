@@ -2,6 +2,7 @@
 using AnimePlace.Models;
 using AnimePlace.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.ConstrainedExecution;
 
 namespace AnimePlace.Services
 {
@@ -14,7 +15,27 @@ namespace AnimePlace.Services
             this.dbContext = dbContext;
         }
 
+        public async Task AddAnimeToFavoritesAsync(int animeId, string userId)
+        {
+            var user = dbContext.ApplicationUsers.Include("FavoriteAnimes").Where(x => x.Id == userId).FirstOrDefault();
+            
+            var anime = await dbContext.Animes.FindAsync(animeId);
 
+
+
+            if (!user.FavoriteAnimes.Contains(anime))
+            {
+                user.FavoriteAnimes.Add(anime);
+                
+            }
+            else
+            {
+                user.FavoriteAnimes.Remove(anime);
+                
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
 
         public async Task AddCharacterToFavoritesAsync(int characterId, string userId)
         {
@@ -33,15 +54,29 @@ namespace AnimePlace.Services
             await dbContext.SaveChangesAsync();
         }
 
-        public string CheckFavorite(int characterId, string userUserName)
+        public bool CheckAnimeFavorite(int animeId, string userId)
         {
-            var user = dbContext.ApplicationUsers.Include("FavoriteCharacters").Where(x => x.UserName == userUserName).FirstOrDefault();
-            
-            if(user == null || user.FavoriteCharacters.Where(x => x.CharacterId == characterId).FirstOrDefault() == null)
+            var user = dbContext.ApplicationUsers.Include("FavoriteAnimes").Where(x => x.Id == userId).FirstOrDefault();
+
+            if (user == null || user.FavoriteAnimes.Where(x => x.AnimeId == animeId).FirstOrDefault() == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public string CheckCharacterFavorite(int characterId, string userId)
+        {
+            var user = dbContext.ApplicationUsers.Include("FavoriteCharacters").Where(x => x.UserName == userId).FirstOrDefault();
+
+            if (user == null || user.FavoriteCharacters.Where(x => x.CharacterId == characterId).FirstOrDefault() == null)
             {
                 return "Add to favorites";
             }
-            
+
             else
             {
                 return "Remove from favorites";

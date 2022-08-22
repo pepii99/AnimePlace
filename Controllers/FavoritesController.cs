@@ -21,8 +21,8 @@ namespace AnimePlace.Controllers
         public IAddToListService AddToListService { get; }
 
         [Authorize]
-        [HttpPost("{id}")]
-        public async Task<IActionResult> AddToFavorites(int id)
+        [HttpPost("Character/{id}")]
+        public async Task<IActionResult> AddCharacterToFavorites(int id)
         {
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -35,6 +35,41 @@ namespace AnimePlace.Controllers
             await this.favoritesService.AddCharacterToFavoritesAsync(id, userId);
             return Ok();
             
+        }
+
+        [Authorize]
+        [HttpPost("Anime/{id}")]
+        public async Task<IActionResult> AddAnimeToFavorites(int id)
+        {
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId == null)
+            {
+                return base.RedirectToAction();
+            }
+
+            await this.favoritesService.AddAnimeToFavoritesAsync(id, userId);
+            return Ok();
+
+        }
+
+        
+        [HttpGet("Anime/{id}")]
+        public async Task<IActionResult> CheckAnimeFavorites(int id)
+        {
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId == null)
+            {
+                return base.RedirectToAction();
+            }
+
+            var result = this.favoritesService.CheckAnimeFavorite(id, userId);
+
+            return Ok(result);
+
         }
     }
 }

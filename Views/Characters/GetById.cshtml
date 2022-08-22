@@ -15,7 +15,7 @@
             <h4 class="single-character-details">@Model.Details</h4>
         </div>
 
-        <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
+        <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckCharacterFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
         
         
     </div>

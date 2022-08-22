@@ -11,11 +11,11 @@
 <body>
     <div class="anime-details-wrapper">
         <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary edit-button">
-        Edit
-    </a>
-    <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary delete-button">
-        Delete
-    </a>
+            Edit
+        </a>
+        <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary delete-button">
+            Delete
+        </a>
         <div class="anime-details">
             <div>
                 <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-anime-cover">
@@ -26,15 +26,33 @@
                             <button class="btn btn-dark btn-lg btn-block add-watching" onclick="AddToWatchingList()">Watching</button>
                             <button class="btn btn-dark btn-lg btn-block add-completed" onclick="AddToCompletedList()">Completed</button>
                             <button class="btn btn-dark btn-lg btn-block add-planning" onclick="AddToPlanToWatchList()">Plan to watch</button>
-
                         </div>
                     </div>
 
-                    <button class="favorite">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="favorite" onclick="AddAnimeToFavorites()">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-true" viewBox="0 0 20 20" fill="currentColor" style="display: none;">
                             <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                         </svg>
+
                     </button>
+
+
+
+                    <div class="toast" role="alert" @*aria-live="assertive" aria-atomic="true"*@>
+                        @*<div class="toast-header">
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>*@
+                        <div class="toast-body">
+                            Updated successfully.
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -52,12 +70,12 @@
             {
                 <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
             }
-           
+
             @*<div class="genres">
-                @foreach (var genre in @Model.Genres)
-                {
-                    <a class="genre-link">@genre.Name</a>
-                }
+            @foreach (var genre in @Model.Genres)
+            {
+            <a class="genre-link">@genre.Name</a>
+            }
             </div>*@
             <div class="anime-content">
                 <div class="sidebar-content">
@@ -95,11 +113,11 @@
                     </div>
                     <div class="genres">
                         <div class="genres-title">Genres</div>
-                            @foreach (var genre in @Model.Genres)
-                            {
-                                <div class="genre-link">@genre.Name</div>
-                            }
-                     </div>
+                        @foreach (var genre in @Model.Genres)
+                        {
+                            <div class="genre-link">@genre.Name</div>
+                        }
+                    </div>
                 </div>
                 <div class="characters-recommendation">
                     <div class="characters">
@@ -142,19 +160,144 @@
             </div>
 
         </div>
-        
+
     </section>
-    
+
 </body>
 
 @section Scripts {
     <script>
+
+        const favoriteIconFalse = $('.favorite-icon-false');
+        const favoriteIconTrue = $('.favorite-icon-true');
+
+
+        const UpdateListButtons = (action) => {
+
+            const addListElement = $('.add-list-button');
+            const watchingElement = $('.add-watching');
+            const completedElement = $('.add-completed');
+            const planElement = $('.add-planning');
+
+            switch (action) {
+                case 'Watching':
+                    watchingElement.hide();
+                    completedElement.show();
+                    planElement.show();
+                    break;
+
+                case 'Completed':
+                    completedElement.hide();
+                    watchingElement.show();
+                    planElement.show();
+                    break;
+
+                case "Plan To Watch":
+                    planElement.hide();
+                    completedElement.show();
+                    watchingElement.show();
+                    break;
+
+                default:
+                    console.log("erroooor");
+            }
+
+            $(addListElement)[0].innerHTML = action;
+
+        }
+
+        const Toasty = () => {
+
+            const options = {
+                animation: true,
+                autohide: true,
+                delay: 2500
+            };
+
+            const toast = $('.toast').toast(options);
+            toast.toast('show');
+        }
+
+
+
+        const checkUserList = () => {
+
+            let CheckIfAnimeInList = $.ajax({
+                type: 'GET',
+                url: '/api/AddToList/CheckUserList/@Model.Id',
+
+                success: function () {
+
+                    const responseText = CheckIfAnimeInList.responseText;
+
+                    UpdateListButtons(responseText);
+
+                }
+            });
+
+            let checkIfAnimeInFavorites = $.ajax({
+                type: 'GET',
+                url: '/api/Favorites/Anime/@Model.Id',
+
+                success: function () {
+
+                    const responseText = checkIfAnimeInFavorites.responseText;
+
+                    console.log(responseText);
+                    if (responseText == "true") {
+                        favoriteIconFalse.css('display', 'none');
+                        favoriteIconTrue.css('display', 'inline')
+                    }
+                    else {
+                        favoriteIconTrue.css('display', 'none');
+                        avoriteIconFalse.css('display', 'inline');
+                    }
+
+                }
+
+            });
+
+
+        }
+
+        document.addEventListener('DOMContentLoaded', checkUserList);
+
+        const AddAnimeToFavorites = () => {
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/Favorites/Anime/@Model.Id',
+                
+                success: function() {
+                    
+
+                    if(favoriteIconFalse.css('display') == 'none'){
+                        favoriteIconTrue.css('display', 'none');
+                        favoriteIconFalse.css('display', 'inline');
+                    }
+                    else {
+                        favoriteIconTrue.css('display', 'inline');
+                        favoriteIconFalse.css('display', 'none');
+                    }
+                }
+                });
+        }
+
+
         const AddToWatchingList = () => {
 
             $.ajax({
                 type: 'POST',
                 url: '/api/AddToList/Watching/@Model.Id',
-            })
+                success: function () {
+
+                    UpdateListButtons('Watching')
+                    Toasty();
+                }
+
+            });
+
+
         }
 
         const AddToCompletedList = () => {
@@ -162,7 +305,16 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/AddToList/Completed/@Model.Id',
-            })
+                success: function () {
+
+                    UpdateListButtons('Completed')
+                    Toasty();
+                }
+
+
+            });
+
+
         }
 
         const AddToPlanToWatchList = () => {
@@ -170,7 +322,15 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/AddToList/PlanToWatch/@Model.Id',
-            })
+                success: function () {
+
+                    UpdateListButtons('Plan To Watch')
+                    Toasty();
+                }
+
+            });
+
+
         }
     </script>
 }

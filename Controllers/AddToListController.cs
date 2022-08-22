@@ -57,9 +57,24 @@ namespace AnimePlace.Controllers
                 return NotFound();
             }
 
-            await this.addToListService.GetAnimeInListStatusAsync(id, userId, "planToWatch");
+            await this.addToListService.GetAnimeInListStatusAsync(id, userId, "plan To Watch");
 
             return Ok(200);
+        }
+
+        [HttpGet("CheckUserList/{id}")]
+        public async Task<IActionResult> CheckUserList(int id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            string response = await this.addToListService.CheckUserList(id, userId);
+
+            return Ok(response);
         }
     }
 }

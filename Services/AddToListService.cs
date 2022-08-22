@@ -13,6 +13,13 @@ namespace AnimePlace.Services
             this.dbContext = dbContext;
         }
 
+        public async Task<string> CheckUserList(int id, string userId)
+        {
+            string response = await this.GetAnimeInListStatusAsync(id, userId, null);
+
+            return response;
+        }
+
         //public Task AddAnimeToCompletedList(int id, string userId)
         //{
         //    throw new NotImplementedException();
@@ -47,21 +54,44 @@ namespace AnimePlace.Services
             if (user.CurrentlyWatchingList.CurrentlyWatchingAnimesList.Contains(anime))
             {
                 result = "Watching";
+
+                if(list == null)
+                {
+                    return result;
+                }
+
                 user.CurrentlyWatchingList.CurrentlyWatchingAnimesList.Remove(anime);
             }
             else if (user.CompletedWatchList.CompletedAnimes.Contains(anime))
             {
                 result = "Completed";
+
+                if (list == null)
+                {
+                    return result;
+                }
+
                 user.CompletedWatchList.CompletedAnimes.Remove(anime);
             }
             else if (user.PlanToWatchList.PlanToWatchAnimeList.Contains(anime))
             {
-                result = "PlanToWatch";
+                result = "Plan To Watch";
+
+                if (list == null)
+                {
+                    return result;
+                }
+
                 user.PlanToWatchList.PlanToWatchAnimeList.Remove(anime);
             }
             else
             {
                 result = "none";
+
+                if (list == null)
+                {
+                    return result;
+                }
             }
 
             if(list == "watching")
@@ -72,7 +102,7 @@ namespace AnimePlace.Services
             {
                 user.CompletedWatchList.CompletedAnimes.Add(anime);
             }
-            else if (list == "planToWatch")
+            else if (list == "plan To Watch")
             {
                 user.PlanToWatchList.PlanToWatchAnimeList.Add(anime);
             }

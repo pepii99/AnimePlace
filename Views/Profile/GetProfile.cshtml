@@ -5,23 +5,41 @@
 <div class="profile-banner"></div>
 
 <div class="profile-container">
-    <div class="profile-list">
+    
+    
+    <div class="list-banner">
         <div class="watching-list">
             <h5>Watching animes</h5>
-            <div class="watching-list-container">
-                @foreach(var watchingAnime in @Model.CurrentlyWatchingListView)
-                {
-                    <div class="anime-list-item">
-                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@watchingAnime.AnimeId"><img src="~/img/Animes/@(watchingAnime.AnimeImageUrl).jpg" alt="@watchingAnime.AnimeTitle" class="anime-list-img"/></a>
-                    </div>
-                }
+            @if (Model.CurrentlyWatchingListView.Count == 0)
+            {
+                <h6>Nothing here, start adding animes</h6>
+            }
+            else{
+            <div class="watching-list-grid">
+                
+               
+                    @foreach (var watchingAnime in @Model.CurrentlyWatchingListView)
+                    {
+                        <div class="anime-list-item">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@watchingAnime.AnimeId"><img src="~/img/Animes/@(watchingAnime.AnimeImageUrl).jpg" alt="@watchingAnime.AnimeTitle" class="anime-list-img" /></a>
+                        </div>
+                    }
+                
+                
             </div>
+            }
         </div>
-    </div>
+        </div>
     
+    <div class="list-banner">
         <div class="completed-list">
             <h5>Completed animes</h5>
-            <div class="completed-list-container">
+            @if (Model.CompletedWatchListView.Count == 0)
+            {
+                <h6>Nothing here, start adding animes</h6>
+            }
+            else{
+            <div class="completed-list-grid">
                 @foreach(var completedAnime in @Model.CompletedWatchListView)
                 {
                     <div class="anime-list-item">
@@ -29,11 +47,19 @@
                     </div>
                 }
             </div>
+            }
+        </div>
         </div>
 
+    <div class="list-banner">
         <div class="plantowatch-list">
             <h5>Plan to watch animes</h5>
-            <div class="plantowatch-list-container">
+            @if (Model.PlanToWatchListView.Count == 0)
+            {
+                <h6>Nothing here, start adding animes</h6>
+            }
+            else{
+            <div class="plantowatch-list-grid">
                 @foreach(var planToWatchAnime in @Model.PlanToWatchListView)
                 {
                     <div class="anime-list-item">
@@ -41,11 +67,19 @@
                     </div>
                 }
             </div>
+            }
+        </div>
         </div>
 
+    <div class="list-banner">
         <div class="favorite-animes">
             <h5>Favorite animes</h5>
-            <div class="favorite-animes-container">
+            @if (Model.FavoriteAnimes.Count == 0)
+            {
+                <h6>Nothing here</h6>
+            }
+            else{
+            <div class="favorite-animes-grid">
                 @foreach(var favoriteAnime in @Model.FavoriteAnimes)
                 {
                     <div class="anime-list-item">
@@ -53,11 +87,19 @@
                     </div>
                 }
             </div>
+            }
         </div>
+    </div>
 
+    <div class="list-banner">
         <div class="favorite-characters">
             <h5>Favorite characters</h5>
-            <div class="favorite-characters-container">
+            @if (Model.FavoriteCharacters.Count == 0)
+            {
+                <h6>Nothing here</h6>
+            }
+            else{
+            <div class="favorite-characters-grid">
                 @foreach(var favoriteCharacter in @Model.FavoriteCharacters)
                 {
                     <div class="anime-list-item">
@@ -65,8 +107,11 @@
                     </div>
                 }
             </div>
+            }
         </div>
-    
+        </div>
+
+</div>
     @*<div class="profile-shorcuts"><p>Overview</p>
         <p>Anime list</p>
         <p>Favorites</p>
@@ -102,7 +147,7 @@
 
 
     
-</div>
+
 
 
 

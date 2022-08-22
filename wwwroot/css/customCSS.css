@@ -213,6 +213,8 @@ img {
     width: 30px;
     background-color: #ff4d4d;
     border-radius: 4px;
+    font-family: 'Niagara Engraved';
+    color: black;
 }
 .favorite-icon {
     stroke: black;
@@ -291,10 +293,7 @@ img {
     margin-top: 2px;
 }
 
-.profile-container {
-    width: 1262px;
-    margin: 0 auto;
-}
+
 
 .profile-header{
     display:grid;
@@ -314,7 +313,11 @@ img {
     height: 210px;
     border-radius: 0;
     margin-top: -60px;
-    background-color: rgba(0, 1, 8, .6);
+    background-color: rgba(8, 18, 46, 0.9);
+}
+
+.profile-list-banner{
+    background-color: 
 }
 
 .profile-shorcuts {
@@ -389,8 +392,14 @@ img {
     padding: 0;
     text-align: center;
     border-radius: 0;
+    font-family: Arial;
+
 }
 
+.favorite:focus {
+    outline: none;
+    box-shadow: none;
+}
 /* Dropdown Button */
 .dropbtn {
     background-color: #04AA6D;
@@ -485,25 +494,46 @@ img {
     height: 160px;
 }
 
-.watching-list-container{
+.watching-list-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(auto-fill, 230px);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
 }
 
-.completed-list-container {
+.completed-list-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(auto-fill, 230px);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
 }
 
-.plantowatch-list-container {
+.plantowatch-list-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(auto-fill, 230px);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
 }
+
+.favorite-animes-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(auto-fill, 230px);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+
+
 
 .anime-list-img {
-    width: 157px;
-    height: 224px;
+    /*max-width: 100%;
+    height: auto;*/
+    width: 161px;
+    height: 230px;
+    object-fit: cover;
 }
 
 .related-anime {
@@ -565,5 +595,43 @@ img {
 }
 
 .wrap-character-related {
+    background-color: rgba(0, 10, 37, 0.9);
+}
+
+.toast {
+    position: absolute;
+    left: 200px;
+    top: 480px;
+    width: 140px;
+    height: 29px;
+    padding: 0;
+    font-size: 13px;
+    max-width: 140px;
+}
+
+.toast-body {
+    background-color: black;
+    color: whitesmoke;
+    padding: 5px 5px;
+}
+
+.list-banner > * {
+    width: 1262px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+    .list-banner > * h5, h6 {
+        color: lightgray;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+
+.list-banner:nth-child(even) {
+    background-color: rgba(8, 18, 46, 0.9);
+}
+
+.list-banner:nth-child(odd) {
     background-color: rgba(0, 10, 37, 0.9);
 }
