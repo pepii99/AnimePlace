@@ -5,163 +5,163 @@
 }
 
 <div>
-    <img src="~/img/Borders/@(Model.BorderImageUrl).jpg" class="banner" />
+    <img src="~/img/Borders/@(Model.BorderImageUrl).jpg" class="img-fluid banner" />
 </div>
 
 <body>
-    <div class="anime-details-wrapper">
-        <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary edit-button">
-            Edit
-        </a>
-        <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary delete-button">
-            Delete
-        </a>
-        <div class="anime-details">
-            <div>
-                <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-anime-cover">
-                <div class="actions">
-                    <div class="add-list-dropdown">
-                        <button class="btn btn-dark btn-lg btn-block add-list-button">Add To List</button>
-                        <div class="dropdown-content">
-                            <button class="btn btn-dark btn-lg btn-block add-watching" onclick="AddToWatchingList()">Watching</button>
-                            <button class="btn btn-dark btn-lg btn-block add-completed" onclick="AddToCompletedList()">Completed</button>
-                            <button class="btn btn-dark btn-lg btn-block add-planning" onclick="AddToPlanToWatchList()">Plan to watch</button>
+    <a asp-controller="Animes" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary edit-button">
+        Edit
+    </a>
+    <a asp-controller="Animes" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-secondary delete-button">
+        Delete
+    </a>
+    <div class="content-background">
+        <div class="content">
+
+            <div class="row">
+                <div class="col-sm-3 gutter-increase">
+                    <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="img-fluid single-anime-cover">
+                    <div class="actions">
+                        <div class="add-list-dropdown">
+                            <button class="btn btn-dark btn-lg btn-block add-list-button">Add To List</button>
+                            <div class="dropdown-content">
+                                <button class="btn btn-dark btn-lg btn-block add-watching" onclick="AddToWatchingList()">Watching</button>
+                                <button class="btn btn-dark btn-lg btn-block add-completed" onclick="AddToCompletedList()">Completed</button>
+                                <button class="btn btn-dark btn-lg btn-block add-planning" onclick="AddToPlanToWatchList()">Plan to watch</button>
+                            </div>
                         </div>
+
+                        <button class="favorite" onclick="AddAnimeToFavorites()">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-true" viewBox="0 0 20 20" fill="currentColor" style="display: none;">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                            </svg>
+
+                        </button>
+
                     </div>
 
-                    <button class="favorite" onclick="AddAnimeToFavorites()">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-true" viewBox="0 0 20 20" fill="currentColor" style="display: none;">
-                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                        </svg>
-
-                    </button>
-
-
-
-                    <div class="toast" role="alert" @*aria-live="assertive" aria-atomic="true"*@>
-                        @*<div class="toast-header">
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>*@
+                    <div class="toast" role="alert">
                         <div class="toast-body">
                             Updated successfully.
                         </div>
                     </div>
                 </div>
 
+
+                <div class="col-sm">
+
+                    <h1 class="single-anime-name">@Model.Name</h1>
+                    <h3 class="single-anime-alternative">@Model.AlternativeName</h3>
+                    <p class="single-anime-sypnosis">@Model.Sypnosis</p>
+
+                </div>
             </div>
 
-            <div class="single-anime-title-sypnosis">
-                <h1 class="single-anime-name">@Model.Name</h1>
-                <h3 class="single-anime-alternative">@Model.AlternativeName</h3>
-                <p class="single-anime-sypnosis">@Model.Sypnosis</p>
+        </div>
+    </div>
+
+    <div class="anime-container">
+        <div class="content">
+            <div class="anime-container-wrapper">
+                @if (@Model.RelatedAnime.AnimeId > 0)
+                {
+                    <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
+                }
+                <div class="row">
+                    <div class="col-no-gutters sidebar-content">
+                        <div class="sidebar-type">
+                            <div class="type-title">Type</div>
+                            <div class="type-content">@Model.Type</div>
+                        </div>
+                        <div class="sidebar-episodes">
+                            <div class="epidoes-title">Episodes</div>
+                            <div class="episodes-content">@Model.Episodes</div>
+                        </div>
+                        <div class="sidebar-status">
+                            <div class="status-title">Status</div>
+                            <div class="status-content">@Model.Status</div>
+                        </div>
+                        <div class="sidebar-aired">
+                            <div class="aired-title">Aired</div>
+                            <div class="aired-content">@Model.Aired</div>
+                        </div>
+                        <div class="sidebar-favorites">
+                            <div class="favorites-title">Favorites</div>
+                            <div class="favorites-content">@Model.Favorites</div>
+                        </div>
+                        <div class="sidebar-score">
+                            <div class="score-title">Score</div>
+                            <div class="score-content">@Model.Score</div>
+                        </div>
+                        <div class="sidebar-source">
+                            <div class="source-title">Source</div>
+                            <div class="source-content">@Model.Source</div>
+                        </div>
+                        <div class="sidebar-rating">
+                            <div class="rating-title">Rating</div>
+                            <div class="rating-content">@Model.Rating</div>
+                        </div>
+                        <div class="genres">
+                            <div class="genres-title">Genres</div>
+                            @foreach (var genre in @Model.Genres)
+                            {
+                                <div class="genre-link">@genre.Name</div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col characters-recommendation">
+                        <div class="characters">
+                            <h3 class="characters-title">Characters</h3>
+                            <div class="characters-grid">
+                                @foreach (var character in @Model.Characters)
+                                {
+
+                                    <div class="character">
+
+                                        <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
+                                        <div class="character-details">
+                                            <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
+                                            <p class="character-role">@character.Role</p>
+                                            <div class="staff">
+                                                <div>V.A: @character.Voice</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                        <div class="recommendations">
+                            <h3 class="recommendations-title">Recommendations</h3>
+                            <div class="recommendations-grid">
+                                @foreach (var recc in @Model.Recommendations)
+                                {
+                                    <div class="reccomendation-item">
+                                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@recc.AnimeId"><img src="~/img/Animes/@(recc.AnimeImageUrl).jpg" alt="@recc.AnimeName" class="reccomendation-anime-img" /></a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="comments">
+                    <h5>Leave a comment</h5>
+                    <div>
+                        Comment
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </div>
-    <section class="anime-container">
-        <div class="anime-container-wrapper">
-            @if (@Model.RelatedAnime.AnimeId > 0)
-            {
-                <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
-            }
-
-            @*<div class="genres">
-            @foreach (var genre in @Model.Genres)
-            {
-            <a class="genre-link">@genre.Name</a>
-            }
-            </div>*@
-            <div class="anime-content">
-                <div class="sidebar-content">
-                    <div class="sidebar-type">
-                        <div class="type-title">Type</div>
-                        <div class="type-content">@Model.Type</div>
-                    </div>
-                    <div class="sidebar-episodes">
-                        <div class="epidoes-title">Episodes</div>
-                        <div class="episodes-content">@Model.Episodes</div>
-                    </div>
-                    <div class="sidebar-status">
-                        <div class="status-title">Status</div>
-                        <div class="status-content">@Model.Status</div>
-                    </div>
-                    <div class="sidebar-aired">
-                        <div class="aired-title">Aired</div>
-                        <div class="aired-content">@Model.Aired</div>
-                    </div>
-                    <div class="sidebar-favorites">
-                        <div class="favorites-title">Favorites</div>
-                        <div class="favorites-content">@Model.Favorites</div>
-                    </div>
-                    <div class="sidebar-score">
-                        <div class="score-title">Score</div>
-                        <div class="score-content">@Model.Score</div>
-                    </div>
-                    <div class="sidebar-source">
-                        <div class="source-title">Source</div>
-                        <div class="source-content">@Model.Source</div>
-                    </div>
-                    <div class="sidebar-rating">
-                        <div class="rating-title">Rating</div>
-                        <div class="rating-content">@Model.Rating</div>
-                    </div>
-                    <div class="genres">
-                        <div class="genres-title">Genres</div>
-                        @foreach (var genre in @Model.Genres)
-                        {
-                            <div class="genre-link">@genre.Name</div>
-                        }
-                    </div>
-                </div>
-                <div class="characters-recommendation">
-                    <div class="characters">
-                        <h3 class="characters-title">Characters</h3>
-                        <div class="characters-grid">
-                            @foreach (var character in @Model.Characters)
-                            {
-
-                                <div class="character">
-
-                                    <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
-                                    <div class="character-details">
-                                        <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
-                                        <p class="character-role">@character.Role</p>
-                                        <div class="staff">
-                                            <div>V.A: @character.Voice</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-
-                    </div>
-                    <div class="recommendations">
-                        <h3 class="recommendations-title">Recommendations</h3>
-                        <div class="recommendations-grid">
-                            @foreach (var recc in @Model.Recommendations)
-                            {
-                                <div class="reccomendation-item">
-                                    <a asp-controller="Animes" asp-action="GetById" asp-route-id="@recc.AnimeId"><img src="~/img/Animes/@(recc.AnimeImageUrl).jpg" alt="@recc.AnimeName" class="reccomendation-anime-img" /></a>
-                                </div>
-                            }
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-        </div>
-
-    </section>
 
 </body>
 
@@ -267,11 +267,11 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/Favorites/Anime/@Model.Id',
-                
-                success: function() {
-                    
 
-                    if(favoriteIconFalse.css('display') == 'none'){
+                success: function () {
+
+
+                    if (favoriteIconFalse.css('display') == 'none') {
                         favoriteIconTrue.css('display', 'none');
                         favoriteIconFalse.css('display', 'inline');
                     }
@@ -280,7 +280,7 @@
                         favoriteIconFalse.css('display', 'none');
                     }
                 }
-                });
+            });
         }
 
 

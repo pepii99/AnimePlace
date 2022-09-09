@@ -6,16 +6,23 @@
 @inject UserManager<ApplicationUser> userManager
 
 <div class="single-character-banner"></div>
+
 <div class="single-character-wrapper">
-    <div class="single-character-content">
-        
-        <img src="~/img/Characters/@(Model.ImageUrl).jpg" alt="@Model.Name" class="single-character-image">
-        <div>
+    <div class="content">
+    <div class="row">
+        <div class="col-sm-2">
+                <img src="~/img/Characters/@(Model.ImageUrl).jpg" alt="@Model.Name" style="img-fluid; margin-top: -40%; width: 100%; height: auto;">
+                <div style="margin-top: 1rem;">
+                    <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckCharacterFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
+                </div>
+            </div>
+            
+        <div class="col-sm">
             <h3 id="single-character-name">@Model.Name</h3>
             <h4 class="single-character-details">@Model.Details</h4>
         </div>
 
-        <a onclick="AddCharacterToFavorites()" class="btn btn-secondary" id="character-favorites-button">@FavoritesService.CheckCharacterFavorite(@Model.CharacterId, userManager.GetUserName(User))</a>
+        
         
         
     </div>
@@ -30,6 +37,7 @@
             }
         </div>
         </div>
+    </div>
 </div>
 
 
@@ -44,7 +52,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/api/Favorites/@Model.CharacterId',
+                url: '/api/Favorites/Character/@Model.CharacterId',
 
 
 

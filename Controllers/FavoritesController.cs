@@ -18,7 +18,7 @@ namespace AnimePlace.Controllers
             this.favoritesService = favoritesService;
         }
 
-        public IAddToListService AddToListService { get; }
+        //public IAddToListService AddToListService { get; }
 
         [Authorize]
         [HttpPost("Character/{id}")]

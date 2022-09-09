@@ -8,7 +8,8 @@
 
 
 <form method="post">
-    <div class="border p-3 mt-4 px-4">
+    <div class="content">
+        <div class="p-3 mt-4 px-4" style="margin-top: 0 !important;">
         <div class="row pb-2">
             <h2 class="text-primary">Add Anime</h2>
         </div>
@@ -29,7 +30,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Sypnosis"></label>
-            <input asp-for="Sypnosis" class="form-control" />
+                <textarea asp-for="Sypnosis" class="form-control"></textarea>
             <span asp-validation-for="Sypnosis" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -77,13 +78,15 @@
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>*@
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Animes" asp-action="Index" class="btn btn-secondary" style = "width:150px">
+            Back to list
+        </a>
         
+    </div>
     </div>
 </form>
 
-<a asp-controller="Animes" asp-action="Index" class="btn btn-secondary" style = "width:150px">
-            Back to list
-        </a>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

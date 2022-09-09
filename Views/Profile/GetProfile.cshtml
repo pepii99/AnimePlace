@@ -9,20 +9,23 @@
     
     <div class="list-banner">
         <div class="watching-list">
+            <div class="content">
             <h5>Watching animes</h5>
             @if (Model.CurrentlyWatchingListView.Count == 0)
             {
                 <h6>Nothing here, start adding animes</h6>
             }
             else{
-            <div class="watching-list-grid">
+            <div class="row">
                 
                
                     @foreach (var watchingAnime in @Model.CurrentlyWatchingListView)
                     {
-                        <div class="anime-list-item">
-                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@watchingAnime.AnimeId"><img src="~/img/Animes/@(watchingAnime.AnimeImageUrl).jpg" alt="@watchingAnime.AnimeTitle" class="anime-list-img" /></a>
-                        </div>
+                        <div class="col-sm-2">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@watchingAnime.AnimeId"><img src="~/img/Animes/@(watchingAnime.AnimeImageUrl).jpg" alt="@watchingAnime.AnimeTitle" class="img-fluid all-anime-img" /></a>
+                            <p style="margin-top: 0.5rem;margin-bottom: 1rem; font-size: 1rem; color: whitesmoke;">@watchingAnime.AnimeTitle</p>
+                    </div>
+                       
                     }
                 
                 
@@ -30,87 +33,99 @@
             }
         </div>
         </div>
+        </div>
     
     <div class="list-banner">
         <div class="completed-list">
+            <div class="content">
             <h5>Completed animes</h5>
             @if (Model.CompletedWatchListView.Count == 0)
             {
                 <h6>Nothing here, start adding animes</h6>
             }
             else{
-            <div class="completed-list-grid">
+            <div class="row">
                 @foreach(var completedAnime in @Model.CompletedWatchListView)
                 {
-                    <div class="anime-list-item">
-                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@completedAnime.AnimeId"><img src="~/img/Animes/@(completedAnime.AnimeImageUrl).jpg" alt="@completedAnime.AnimeTitle" class="anime-list-img"/></a>
+                        <div class="col-sm-2">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@completedAnime.AnimeId"><img src="~/img/Animes/@(completedAnime.AnimeImageUrl).jpg" alt="@completedAnime.AnimeTitle" class="img-fluid all-anime-img" /></a>
+                            <p style="margin-top: 0.5rem;margin-bottom: 1rem; font-size: 1rem; color: whitesmoke;">@completedAnime.AnimeTitle</p>
                     </div>
                 }
             </div>
             }
         </div>
         </div>
+        </div>
 
     <div class="list-banner">
         <div class="plantowatch-list">
+            <div class="content">
             <h5>Plan to watch animes</h5>
             @if (Model.PlanToWatchListView.Count == 0)
             {
                 <h6>Nothing here, start adding animes</h6>
             }
             else{
-            <div class="plantowatch-list-grid">
+                <div class="row">
                 @foreach(var planToWatchAnime in @Model.PlanToWatchListView)
                 {
-                    <div class="anime-list-item">
-                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@planToWatchAnime.AnimeId"><img src="~/img/Animes/@(planToWatchAnime.AnimeImageUrl).jpg" alt="@planToWatchAnime.AnimeTitle" class="anime-list-img"/></a>
+                    <div class="col-sm-2">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@planToWatchAnime.AnimeId"><img src="~/img/Animes/@(planToWatchAnime.AnimeImageUrl).jpg" alt="@planToWatchAnime.AnimeTitle" class="img-fluid all-anime-img" /></a>
+                            <p style="margin-top: 0.5rem;margin-bottom: 1rem; font-size: 1rem; color: whitesmoke;">@planToWatchAnime.AnimeTitle</p>
                     </div>
                 }
             </div>
             }
         </div>
         </div>
+        </div>
 
     <div class="list-banner">
         <div class="favorite-animes">
+            <div class="content">
             <h5>Favorite animes</h5>
             @if (Model.FavoriteAnimes.Count == 0)
             {
                 <h6>Nothing here</h6>
             }
             else{
-            <div class="favorite-animes-grid">
+            <div class="row">
                 @foreach(var favoriteAnime in @Model.FavoriteAnimes)
                 {
-                    <div class="anime-list-item">
-                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@favoriteAnime.Id"><img src="~/img/Animes/@(favoriteAnime.ImageUrl).jpg" alt="@favoriteAnime.Title" class="anime-list-img"/></a>
+                    <div class="col-sm-2">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@favoriteAnime.Title"><img src="~/img/Animes/@(favoriteAnime.ImageUrl).jpg" alt="@favoriteAnime.Title" class="img-fluid all-anime-img" /></a>
+                            <p style="margin-top: 0.5rem;margin-bottom: 1rem; font-size: 1rem; color: whitesmoke;">@favoriteAnime.Title</p>
                     </div>
                 }
             </div>
             }
         </div>
+        </div>
     </div>
 
     <div class="list-banner">
         <div class="favorite-characters">
+            <div class="content">
             <h5>Favorite characters</h5>
             @if (Model.FavoriteCharacters.Count == 0)
             {
                 <h6>Nothing here</h6>
             }
             else{
-            <div class="favorite-characters-grid">
+            <div class="row">
                 @foreach(var favoriteCharacter in @Model.FavoriteCharacters)
                 {
-                    <div class="anime-list-item">
-                        <a asp-controller="Characters" asp-action="GetById" asp-route-id="@favoriteCharacter.Id"><img src="~/img/Characters/@(favoriteCharacter.ImageUrl).jpg" alt="@favoriteCharacter.Name" class="anime-list-img"/></a>
+                    <div class="col-sm-2">
+                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@favoriteCharacter.Id"><img src="~/img/Characters/@(favoriteCharacter.ImageUrl).jpg" alt="@favoriteCharacter.Name" class="img-fluid anime-list-img" /></a>
+                            <p style="margin-top: 0.5rem;margin-bottom: 1rem; font-size: 1rem; color: whitesmoke;">@favoriteCharacter.Name</p>
                     </div>
                 }
             </div>
             }
         </div>
         </div>
-
+    </div>
 </div>
     @*<div class="profile-shorcuts"><p>Overview</p>
         <p>Anime list</p>

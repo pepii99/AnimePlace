@@ -26,11 +26,13 @@ namespace AnimePlace.Services
             if (!user.FavoriteAnimes.Contains(anime))
             {
                 user.FavoriteAnimes.Add(anime);
+                anime.Favorites++;
                 
             }
             else
             {
                 user.FavoriteAnimes.Remove(anime);
+                anime.Favorites--;
                 
             }
 

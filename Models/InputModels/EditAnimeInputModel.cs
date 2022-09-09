@@ -26,6 +26,7 @@ namespace AnimePlace.Models.InputModels
 
         [MinLength(1)]
         [MaxLength(70)]
+        
         public string? AlternativeName { get; set; }
 
         [MinLength(5)]

@@ -7,7 +7,8 @@
 }
 
 <form method="post" asp-action="Edit">
-    <div class="border p-3 mt-4 px-4">
+    <div class="content">
+    <div class="p-3 mt-4 px-4" style="margin-top: 0 !important;">
         <div class="row pb-2">
         </div>
         <div class="mb-3" style="color: #ffffff">
@@ -27,7 +28,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Sypnosis"></label>
-            <input asp-for="Sypnosis" class="form-control" />
+            <textarea asp-for="Sypnosis" class="form-control"></textarea>
             <span asp-validation-for="Sypnosis" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -36,12 +37,12 @@
             <span asp-validation-for="Rating" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Aired"></label>
+                <label asp-for="Aired">Aired Default: Oct 3, 2020 to Mar 27, 2021</label>
             <input asp-for="Aired" class="form-control" />
             <span asp-validation-for="Aired" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Source"></label>
+                <label asp-for="Source">Source Default: Manga</label>
             <input asp-for="Source" class="form-control" />
             <span asp-validation-for="Source" class="text-danger"></span>
         </div>
@@ -56,7 +57,7 @@
             <span asp-validation-for="ImageUrl" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="BorderImageUrl"></label>
+                <label asp-for="BorderImageUrl">BorderImageUrl Default: no-image</label>
             <input asp-for="BorderImageUrl" class="form-control" />
             <span asp-validation-for="BorderImageUrl" class="text-danger"></span>
         </div>
@@ -75,13 +76,15 @@
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>*@
         <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+            <a asp-controller="Animes" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Back to list
+            </a>
         
+    </div>
     </div>
 </form>
 
-<a asp-controller="Animes" asp-action="Index" class="btn btn-secondary" style = "width:150px">
-            Back to list
-        </a>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -2,49 +2,27 @@
 @model AnimesListViewModel
 @{
     ViewData["Title"] = "All Anime";
-    
-}
-
-
-@*<div class="row" style="padding-left:60px; padding-right:60px;">
-@foreach(var anime in this.Model.Animes)
-{
-    
-    <div class="p-1 d-flex col-md-3">
-  <div class="p-1 flex-shrink-0">
-  <img src="~/img/Animes/@(anime.ImageUrl).jpg" width="120" height="160" alt="..." class="img-thumbnail">
-  </div>
-  <div class="p-1 flex-shrink-1 ms-3">
-      
-      <h5 class="p-1 text-left"><a asp-action="GetById" asp-route-id="@anime.Id">@anime.Name</a></h5>
-     
-    <div class="p-1 text-left overflow-auto" style="height: 215px; width: 265px;">@anime.Synopsis</div>
-  </div>
-  </div>
-
 
 }
-</div>*@
-<div class="animes-container-wrapper">
-<div class="animes-container">
+<section class="all-animes">
+    <div class="content">
     
-    @foreach(var anime in this.Model.Animes)
-    {
-    <div>
-  <div>
-  <img src="~/img/Animes/@(anime.ImageUrl).jpg" alt="..." class="all-anime-img">
-  </div>
-  <div>
-      
-      <h5><a asp-action="GetById" asp-route-id="@anime.Id">@anime.Name</a></h5>
-     
-    @*<div>@anime.Synopsis</div>*@
-  </div>
-  </div>
+        <div class="row g-2">
 
-    }
+            @foreach (var anime in this.Model.Animes)
+            {
+                <div class="col-lg-2" style="margin-bottom: 1.5rem;">
+
+
+                    <a asp-action="GetById" asp-route-id="@anime.Id">
+                        <img src="~/img/Animes/@(anime.ImageUrl).jpg" alt="@anime.Name" class="img-fluid all-anime-img">
+                        </a>
+                        <p style="margin-top: 0.5rem; font-size: 1rem;">@anime.Name</p>
+                        @*<a asp-action="GetById" asp-route-id="@anime.Id" class="all-anime-list-item-name">@anime.Name</a>*@
+                    
+                </div>
+            }
+        
+        </div>
     </div>
-</div>
-
-
-@*<partial name="_PagingPartial" model="@Model"></partial>*@
+</section>
