@@ -6,12 +6,17 @@
     /*border: 1px solid red !important;*/
 }
 
+.html {
+    background-color: black;
+}
+
 html, body {
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    color: lightgray;
 }
 
 #nav-bar {
@@ -19,7 +24,6 @@ html, body {
 }
 
 .content {
-    color: lightgrey;
     margin: 0% 12%;
 }
 
@@ -44,6 +48,7 @@ html, body {
     height: 60px !important;
     overflow: scroll;
 }
+
 .panel-heading {
     display: block;
     max-block-size: 300px;
@@ -71,14 +76,13 @@ html, body {
 }
 
 .col-md-4 {
-    margin-left: 420px; 
+    margin-left: 420px;
 }
 
 .all-anime-img {
     object-fit: cover;
     width: 92%;
     height: 82%;
-    
 }
 
 /*Single Page details*/
@@ -91,10 +95,10 @@ html, body {
 }
 
 .anime-container {
-    padding-top: 1rem; 
+    padding-top: 1rem;
 }
 
-.single-anime-cover {    
+.single-anime-cover {
     margin-top: -130px;
 }
 
@@ -150,7 +154,6 @@ img {
 }
 
 .single-anime-title-sypnosis {
-    
     padding: 10px 10px
 }
 
@@ -159,10 +162,10 @@ img {
 }
 
 .actions {
-    display: grid;
-    grid-template-columns: 70% 1fr;
+    display: flex;
+    justify-content: space-between;
     margin-top: 1rem;
-    grid-gap: 1rem;
+    max-height: 2rem;
 }
 
 .add-list {
@@ -170,6 +173,7 @@ img {
     font-size: 14px;
     color: white;
 }
+
 .favorite {
     padding: 0;
     width: 30px;
@@ -177,6 +181,7 @@ img {
     border-radius: 4px;
     color: black;
 }
+
 .favorite-icon {
     stroke: black;
     fill: #F0F8FF;
@@ -185,44 +190,32 @@ img {
     padding-bottom: 3px;
 }
 
-.characters-title {
-    display:inline-block;
-    font-size: 18px;
-    margin-left: 0px;
-    margin-bottom: 17px;
-    color: whitesmoke;
-}
-
-.characters {
-    display: inline-block;
-    padding: 15px 15px;
-    border-radius: 3px;
-    background-color: rgba(18, 29, 49, 1);
-}
-
 #character-name {
     color: lightgray;
 }
 
-.characters-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 20px;
-    row-gap: 15px;
+.character {
+    background-color: rgba(21, 41, 76, 0.9)
 }
 
-.character {
-    display: grid;
-    
-    grid-template-columns: 52px auto;
-    background-color: rgba(21, 41, 76, 0.9)
-    
+.characters-recommendation {
+    background-color: rgba(21, 41, 76, 0.9);
 }
 
 .character-img {
     width: 52px;
     height: 72px;
+    border-radius: unset;
+}
+
+.related-anime {
+    margin-left: 30%;
+}
+
+.box {
+    box-sizing: border-box;
+    border: 10px solid transparent;
+    background-clip: padding-box;
 }
 
 #character-name {
@@ -230,6 +223,7 @@ img {
     margin-bottom: 0;
     margin-top: 2px;
 }
+
 .character-details {
     margin-left: 6px;
     color: darkgray;
@@ -254,8 +248,8 @@ img {
 
 
 
-.profile-header{
-    display:grid;
+.profile-header {
+    display: grid;
     grid-template-columns: 240px 300px 1fr;
     gap: 30px;
 }
@@ -273,8 +267,8 @@ img {
     background-color: rgba(8, 18, 46, 0.9);
 }
 
-.profile-list-banner{
-    background-color: 
+.profile-list-banner {
+    background-color:
 }
 
 .profile-shorcuts {
@@ -309,112 +303,78 @@ img {
     gap: 10px;
 }
 
-.recommendations {
-    color: lightgray;
-    padding: 15px 15px;
-    border-radius: 3px;
-    background-color: rgba(18, 29, 49, 1);
-}
-
-.recommendations-title {
-    display: inline-block;
-    font-size: 18px;
-    margin-bottom: 17px;
-    margin-left: 0px;
-    color: whitesmoke;
-}
-
-.characters-recommendation {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 250px 240px;
-    grid-gap: 25px;
-}
-
 .anime-activity-img {
     width: 70px;
 }
 
 .add-list-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + .2rem);
+    background-color: transparent;
+    border: none;
+    border-radius: unset;
+    width: 140px !important;
+    padding: 0;
+}
+
+.dropdown-button {
+    color: whitesmoke;
+    background: rgba(8, 18, 46, 0.9);
+    width: 140px !important;
+}
+
+.dropdown-button:hover {
+    color: #3498db !important;
+    background: rgba(21, 41, 76, 0.7) !important;
+    width: 140px !important;
+}
+
+.add-list-button {
+    width: 140px;
+    border: 1px solid #3498db;
+    background: rgba(21, 41, 76, 0.7);
+    font-size: 1rem;
+    padding: 0.2rem 0.8rem;
+    color: whitesmoke;
+    margin: 0;
+    transition: 0.4s;
+    border-radius: 6px;
+    margin-bottom: 2px;
+}
+
+.add-list-dropdown > .add-list-button:focus + .dropdown-menu {
     display: inline-block;
 }
 
-    .add-list-dropdown:hover .dropdown-content {
-        display: block;
-    }
+.add-list-button:hover {
+    color: #3498db !important;
+    border-color: #3498db !important;
+}
 
-.add-list-button {
-    height: 30px;
-    font-size: 16px;
-    padding: 0;
-    text-align: center;
-    border-radius: 0;
-    font-family: Arial;
 
+
+
+
+
+
+
+
+
+
+
+.recommendation-anime-img {
+    max-width: 94%;
 }
 
 .favorite:focus {
     outline: none;
     box-shadow: none;
-}
-/* Dropdown Button */
-.dropbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-.add-watching {
-    font-size: 13px;
-}
-
-.add-completed {
-    font-size: 13px;
-}
-
-.add-planning {
-    font-size: 13px;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    font-size: 5px;
-    background-color: black;
-    min-width: 195px;
-    padding: 0;
-}
-
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
 }
 
 .sidebar-content {
@@ -422,30 +382,12 @@ img {
     font-size: 14px;
 }
 
-    .sidebar-content > * {
-        padding: 4px 8px;
-        background-color: rgba(21, 41, 76, 0.9);
-        color: lightgray;
-        margin: 17px 15px;
-        border-radius: 3px;
-    }
-
-.recommendations-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-column-gap: 30px;
-    
-}
-
-.reccomendation-anime-img {
-    width: 115px;
-    height: 160px;
-}
-
-.related-anime {
-    margin-left: 22%;
+.sidebar-content > * {
+    padding: 4px 8px;
+    background-color: rgba(21, 41, 76, 0.9);
     color: lightgray;
-    margin-bottom: 1rem;
+    margin: 12px 10px;
+    border-radius: 3px;
 }
 
 .genres-title {
@@ -509,12 +451,12 @@ img {
     padding: 2rem 2rem;
 }
 
-    .list-banner > * h5, h6 {
-        color: lightgray;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-left: 0;
-    }
+.list-banner > * h5, h6 {
+    color: lightgray;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
 
 .list-banner:nth-child(even) {
     background-color: rgba(8, 18, 46, 0.9);
@@ -524,31 +466,24 @@ img {
     background-color: rgba(0, 10, 37, 0.9);
 }
 
-.col-md-9 {
-    padding-left: 120px;
-}
-
 a {
-    color: whitesmoke !important;
+    color: whitesmoke;
     background: none;
+    text-decoration: none;
 }
 
 a:hover {
     text-decoration: none;
+    color: inherit;
 }
 
-    .manage-profile {
-        margin-left: 10%;
-    }
-
+.manage-profile {
+    margin-left: 10%;
+}
 
 
 .anime-list-img {
     max-width: 100%;
-}
-
-.row {
-    margin: 0 !important;
 }
 
 .comments {

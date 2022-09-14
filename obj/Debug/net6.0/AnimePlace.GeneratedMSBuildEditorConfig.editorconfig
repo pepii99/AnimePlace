@@ -91,20 +91,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Visual Studio Projects/AnimePlace/Views/Shared/_LayoutOld2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPbGQyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Visual Studio Projects/AnimePlace/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Visual Studio Projects/AnimePlace/Views/Shared/_PagingPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmdQYXJ0aWFsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual Studio Projects/AnimePlace/Views/Shared/_UserMessages.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VyTWVzc2FnZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Visual Studio Projects/AnimePlace/Views/Shared/_ValidationScriptsPartial.cshtml]
@@ -118,7 +110,3 @@ build_metadata.AdditionalFiles.CssScope =
 [E:/Visual Studio Projects/AnimePlace/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual Studio Projects/AnimePlace/Views/Shared/_OldLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9PbGRMYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-09bo29bkrm

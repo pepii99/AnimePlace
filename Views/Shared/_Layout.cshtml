@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewData["Title"]</title>
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,23 +12,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-
+    @*<link rel="stylesheet" href="~/css/font-awesome.min.css" asp-append-version="true">*@
     @*<link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">*@
     @*<link rel="stylesheet" href="~/css/plyr.css" type="text/css">*@
     @*<link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">*@
     @*<link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">*@
+    @*<link rel="stylesheet" href="~/css/nice-select.css" asp-append-version="true">*@
     <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true">
-    @*<link rel="stylesheet" href="~/css/font-awesome.min.css" asp-append-version="true">*@
-    <link rel="stylesheet" href="~/css/nice-select.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/customCSS.css" asp-append-version="true">
-
-
-
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow" id="nav-bar">
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow" id="nav-bar">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Anime Place</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -39,6 +33,39 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        if (this.User.IsInRole("Admin"))
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Animes" asp-action="Create">Add new Anime</a>
+                        </li>
+                        <li class="nav-item mr-auto">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Animes" asp-action="AllAnimes">All Anime</a>
+                        </li>
+                        @if (this.User.Claims.Any())
+                        {
+                            <li class="nav-item mr-auto">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Profile" asp-action="GetProfile">Profile</a>
+                            </li>
+                        }
+
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>*@
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Anime Place</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -58,9 +85,14 @@
                             </li>
                         }
 
+                        
                     </ul>
+                    <partial name="_LoginPartial"/>
 
-                    <partial name="_LoginPartial" />
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>

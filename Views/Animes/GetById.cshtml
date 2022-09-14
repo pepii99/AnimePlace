@@ -17,17 +17,20 @@
     </a>
     <div class="content-background">
         <div class="content">
-
+            <div class="container" style="min-height: 280px;">
             <div class="row">
-                <div class="col-sm-3 gutter-increase">
-                    <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="img-fluid single-anime-cover">
+                <div class="col-sm-2">
+                    <div style="width: 100%; margin-top: -110px;">
+                            <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="img-fluid @*single-anime-cover*@">
+                    </div>
+                    
                     <div class="actions">
                         <div class="add-list-dropdown">
-                            <button class="btn btn-dark btn-lg btn-block add-list-button">Add To List</button>
-                            <div class="dropdown-content">
-                                <button class="btn btn-dark btn-lg btn-block add-watching" onclick="AddToWatchingList()">Watching</button>
-                                <button class="btn btn-dark btn-lg btn-block add-completed" onclick="AddToCompletedList()">Completed</button>
-                                <button class="btn btn-dark btn-lg btn-block add-planning" onclick="AddToPlanToWatchList()">Plan to watch</button>
+                            <button class="link add-list-button">Add To List</button>
+                            <div class="dropdown-menu">
+                                    <button class="btn dropdown-button" onclick="AddToList('Watching')">Watching</button>
+                                    <button class="btn dropdown-button" onclick="AddToList('Completed')">Completed</button>
+                                    <button class="btn dropdown-button" onclick="AddToList('PlanToWatch')">Plan to watch</button>
                             </div>
                         </div>
 
@@ -61,19 +64,19 @@
 
                 </div>
             </div>
-
+            </div>
         </div>
     </div>
 
     <div class="anime-container">
         <div class="content">
-            <div class="anime-container-wrapper">
+            <div class="container">
                 @if (@Model.RelatedAnime.AnimeId > 0)
                 {
                     <div class="related-anime">Related Anime: <a asp-controller="Animes" asp-action="GetById" asp-route-id="@Model.RelatedAnime.AnimeId">@Model.RelatedAnime.AnimeName</a></div>
                 }
                 <div class="row">
-                    <div class="col-no-gutters sidebar-content">
+                    <div class="col-lg-2 g-0 sidebar-content box">
                         <div class="sidebar-type">
                             <div class="type-title">Type</div>
                             <div class="type-content">@Model.Type</div>
@@ -114,40 +117,49 @@
                             }
                         </div>
                     </div>
-                    <div class="col characters-recommendation">
-                        <div class="characters">
-                            <h3 class="characters-title">Characters</h3>
-                            <div class="characters-grid">
+                    <div class="col-lg-10">
+                        
+                        <div class="row box">
+                            <div class="col-lg-12 mb-5 pb-3 pt-2" style="background-color: rgba(18, 29, 49, 1)">
+                                <div>Characters</div>
+                            
+                            
+                            <div class="row gy-2">
                                 @foreach (var character in @Model.Characters)
                                 {
 
-                                    <div class="character">
-
+                                    <div class="col-sm-3 box">
+                                            <div class="row characters-recommendation">
+                                                <div class="col-sm-3 g-0">
                                         <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
-                                        <div class="character-details">
+                                                </div>
+                                                <div class="col-sm-9 g-0">
                                             <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
                                             <p class="character-role">@character.Role</p>
                                             <div class="staff">
                                                 <div>V.A: @character.Voice</div>
                                             </div>
                                         </div>
+                                            </div>
                                     </div>
                                 }
                             </div>
-
+                                    
                         </div>
-                        <div class="recommendations">
-                            <h3 class="recommendations-title">Recommendations</h3>
-                            <div class="recommendations-grid">
-                                @foreach (var recc in @Model.Recommendations)
+                            <div class="col-lg-12 mt-5 pb-3 pt-2" style="background-color: rgba(18, 29, 49, 1)">
+                            <div class="mb-2">Recommendations</div>
+                            <div class="row">
+                                @foreach (var item in @Model.Recommendations)
                                 {
-                                    <div class="reccomendation-item">
-                                        <a asp-controller="Animes" asp-action="GetById" asp-route-id="@recc.AnimeId"><img src="~/img/Animes/@(recc.AnimeImageUrl).jpg" alt="@recc.AnimeName" class="reccomendation-anime-img" /></a>
+                                        <div class="col-lg-2">
+                                            <a asp-controller="Animes" asp-action="GetById" asp-route-id="@item.AnimeId"><img src="~/img/Animes/@(item.AnimeImageUrl).jpg" alt="@item.AnimeName" class="recommendation-anime-img" /></a>
                                     </div>
                                 }
                             </div>
                         </div>
 
+                    </div>
+                        
                     </div>
                 </div>
                 <div class="comments">
@@ -192,7 +204,7 @@
                     planElement.show();
                     break;
 
-                case "Plan To Watch":
+                case "PlanToWatch":
                     planElement.hide();
                     completedElement.show();
                     watchingElement.show();
@@ -283,48 +295,14 @@
             });
         }
 
-
-        const AddToWatchingList = () => {
-
-            $.ajax({
-                type: 'POST',
-                url: '/api/AddToList/Watching/@Model.Id',
-                success: function () {
-
-                    UpdateListButtons('Watching')
-                    Toasty();
-                }
-
-            });
-
-
-        }
-
-        const AddToCompletedList = () => {
+        const AddToList = (list) => {
 
             $.ajax({
                 type: 'POST',
-                url: '/api/AddToList/Completed/@Model.Id',
+                url: `/api/AddToList/${list}/@Model.Id`,
                 success: function () {
 
-                    UpdateListButtons('Completed')
-                    Toasty();
-                }
-
-
-            });
-
-
-        }
-
-        const AddToPlanToWatchList = () => {
-
-            $.ajax({
-                type: 'POST',
-                url: '/api/AddToList/PlanToWatch/@Model.Id',
-                success: function () {
-
-                    UpdateListButtons('Plan To Watch')
+                    UpdateListButtons(`${list}`)
                     Toasty();
                 }
 

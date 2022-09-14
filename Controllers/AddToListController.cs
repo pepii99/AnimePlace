@@ -69,7 +69,7 @@ namespace AnimePlace.Controllers
 
             if (userId == null)
             {
-                return NotFound();
+                return Ok();
             }
 
             string response = await this.addToListService.CheckUserList(id, userId);

@@ -278,7 +278,6 @@ E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.MvcApplicationP
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.MvcApplicationPartsAssemblyInfo.cache
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.RazorAssemblyInfo.cache
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.RazorAssemblyInfo.cs
-E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\wwwroot\css\customCSS.css
 E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\wwwroot\plugins\bootstrap\js\bootstrap.js
 E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\wwwroot\plugins\fontawesome-free\css\all.css
 E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\wwwroot\plugins\fontawesome-free\css\brands.css
@@ -562,12 +561,11 @@ E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\runtimes\win\lib\net6.0\Sy
 E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\staticwebassets.build.json
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\staticwebassets.development.json
-E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\scopedcss\Views\Shared\_OldLayout.cshtml.rz.scp.css
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\scopedcss\bundle\AnimePlace.styles.css
-E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\scopedcss\projectbundle\AnimePlace.bundle.scp.css
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.csproj.CopyComplete
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.dll
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\refint\AnimePlace.dll
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.pdb
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\AnimePlace.genruntimeconfig.cache
 E:\Visual Studio Projects\AnimePlace\obj\Debug\net6.0\ref\AnimePlace.dll
+E:\Visual Studio Projects\AnimePlace\bin\Debug\net6.0\wwwroot\css\customCSS.css

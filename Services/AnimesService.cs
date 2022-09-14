@@ -132,35 +132,37 @@ namespace AnimePlace.Services
             await dbContext.SaveChangesAsync();
         }
 
+
+        //TODO
         // Gets recommendations (more work to be done here)
         public List<Anime> GetRecommendations(int AnimeId)
         {
-            var animeGenres = dbContext.Animes.Include("Genres").Where(x => x.AnimeId == AnimeId).First().Genres.Select(x => x.Name).ToArray();
-            var animes = dbContext.Animes.ToList();
-            var allGenres = dbContext.Animes.Include("Genres").Select(x => x.Genres.Select(x => x.Name).ToList()).ToArray();
-            var result = new List<Anime>();
-            for (int i = 1; i <= allGenres.Length; i++)
-            {
-                if (allGenres[i].Count <= 0)
-                {
-                    break;
-                }
-                else
-                {
-                    if (animeGenres.Length == 0)
-                    {
-                        break;
-                    }
+            //var animeGenres = dbContext.Animes.Include("Genres").Where(x => x.AnimeId == AnimeId).First().Genres.Select(x => x.Name).ToArray();
+            //var animes = dbContext.Animes.ToList();
+            //var allGenres = dbContext.Animes.Include("Genres").Select(x => x.Genres.Select(x => x.Name).ToList()).ToArray();
+            //var result = new List<Anime>();
+            //for (int i = 1; i <= allGenres.Length; i++)
+            //{
+            //    if (allGenres[i].Count <= 0)
+            //    {
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        if (animeGenres.Length == 0)
+            //        {
+            //            break;
+            //        }
 
-                    if (animeGenres[0] == allGenres[i][0])
-                    {
-                        result.Add(animes[i]);
-                    }
-                }
+            //        if (animeGenres[0] == allGenres[i][0])
+            //        {
+            //            result.Add(animes[i]);
+            //        }
+            //    }
                 
-            }
+            //}
             
-            return result;
+            return null;
         }
 
         // Here also big bug
@@ -171,7 +173,7 @@ namespace AnimePlace.Services
 
             var animeQuery = this.GetQueryableAnime(id);
 
-            //var test = animeQuery.Select(x => x).FirstOrDefault();
+            
 
             var result = animeQuery.Select(x => new SingleAnimeViewModel
             {
