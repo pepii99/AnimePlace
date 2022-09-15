@@ -25,6 +25,12 @@ html, body {
 
 .content {
     margin: 0% 12%;
+    color: whitesmoke;
+}
+
+.login-content, .register-content {
+    margin: 0% 20%;
+    color: whitesmoke;
 }
 
 .content-background {
@@ -307,10 +313,6 @@ img {
     width: 70px;
 }
 
-.add-list-dropdown {
-    position: relative;
-}
-
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -323,15 +325,9 @@ img {
     padding: 0;
 }
 
-.dropdown-button {
+.dropdown-menu > * {
     color: whitesmoke;
     background: rgba(8, 18, 46, 0.9);
-    width: 140px !important;
-}
-
-.dropdown-button:hover {
-    color: #3498db !important;
-    background: rgba(21, 41, 76, 0.7) !important;
     width: 140px !important;
 }
 
@@ -339,17 +335,13 @@ img {
     width: 140px;
     border: 1px solid #3498db;
     background: rgba(21, 41, 76, 0.7);
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0.2rem 0.8rem;
     color: whitesmoke;
     margin: 0;
     transition: 0.4s;
     border-radius: 6px;
     margin-bottom: 2px;
-}
-
-.add-list-dropdown > .add-list-button:focus + .dropdown-menu {
-    display: inline-block;
 }
 
 .add-list-button:hover {

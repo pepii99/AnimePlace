@@ -20,21 +20,6 @@ namespace AnimePlace.Services
             return response;
         }
 
-        //public Task AddAnimeToCompletedList(int id, string userId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task AddAnimeToPlanToWatchList(int id, string userId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task AddAnimeToWatchingList(int id, string userId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public async Task<string> GetAnimeInListStatusAsync(int id, string userId, string list)
         {
             
@@ -102,7 +87,7 @@ namespace AnimePlace.Services
             {
                 user.CompletedWatchList.CompletedAnimes.Add(anime);
             }
-            else if (list == "plan To Watch")
+            else if (list == "Plan To Watch")
             {
                 user.PlanToWatchList.PlanToWatchAnimeList.Add(anime);
             }

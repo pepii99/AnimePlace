@@ -18,52 +18,54 @@
     <div class="content-background">
         <div class="content">
             <div class="container" style="min-height: 280px;">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div style="width: 100%; margin-top: -110px;">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div style="width: 100%; margin-top: -110px;">
                             <img src="~/img/Animes/@(Model.ImageUrl).jpg" alt="@Model.Name" class="img-fluid @*single-anime-cover*@">
-                    </div>
-                    
-                    <div class="actions">
-                        <div class="add-list-dropdown">
-                            <button class="link add-list-button">Add To List</button>
-                            <div class="dropdown-menu">
-                                    <button class="btn dropdown-button" onclick="AddToList('Watching')">Watching</button>
-                                    <button class="btn dropdown-button" onclick="AddToList('Completed')">Completed</button>
-                                    <button class="btn dropdown-button" onclick="AddToList('PlanToWatch')">Plan to watch</button>
+                        </div>
+                            <div class="actions">
+                            <div class="dropdown">
+                                <button class="btn add-list-button" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Add To List
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" id="watching" onclick="AddToList('Watching')">Watching</button>
+                                    <button class="dropdown-item" type="button" id="completed" onclick="AddToList('Completed')">Completed</button>
+                                    <button class="dropdown-item" type="button" id="plan" onclick="AddToList('Plan To Watch')">Plan to watch</button>
+                                </div>
+                            </div>
+                            
+
+                            <button class="favorite" onclick="AddAnimeToFavorites()">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-true" viewBox="0 0 20 20" fill="currentColor" style="display: none;">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                                </svg>
+
+                            </button>
+
+                        </div>
+
+                        <div class="toast" role="alert">
+                            <div class="toast-body">
+                                Updated successfully.
                             </div>
                         </div>
-
-                        <button class="favorite" onclick="AddAnimeToFavorites()">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-false" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" class="favorite-icon-true" viewBox="0 0 20 20" fill="currentColor" style="display: none;">
-                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                            </svg>
-
-                        </button>
-
                     </div>
 
-                    <div class="toast" role="alert">
-                        <div class="toast-body">
-                            Updated successfully.
-                        </div>
+
+                    <div class="col-sm">
+
+                        <h1 class="single-anime-name">@Model.Name</h1>
+                        <h3 class="single-anime-alternative">@Model.AlternativeName</h3>
+                        <p class="single-anime-sypnosis">@Model.Sypnosis</p>
+
                     </div>
                 </div>
-
-
-                <div class="col-sm">
-
-                    <h1 class="single-anime-name">@Model.Name</h1>
-                    <h3 class="single-anime-alternative">@Model.AlternativeName</h3>
-                    <p class="single-anime-sypnosis">@Model.Sypnosis</p>
-
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -118,47 +120,47 @@
                         </div>
                     </div>
                     <div class="col-lg-10">
-                        
+
                         <div class="row box">
                             <div class="col-lg-12 mb-5 pb-3 pt-2" style="background-color: rgba(18, 29, 49, 1)">
                                 <div>Characters</div>
-                            
-                            
-                            <div class="row gy-2">
-                                @foreach (var character in @Model.Characters)
-                                {
 
-                                    <div class="col-sm-3 box">
+
+                                <div class="row gy-2">
+                                    @foreach (var character in @Model.Characters)
+                                    {
+
+                                        <div class="col-sm-3 box">
                                             <div class="row characters-recommendation">
                                                 <div class="col-sm-3 g-0">
-                                        <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
+                                                    <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><img src="~/img/Characters/@(character.ImageUrl).jpg" alt="@character.Name" class="character-img"></a>
                                                 </div>
                                                 <div class="col-sm-9 g-0">
-                                            <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
-                                            <p class="character-role">@character.Role</p>
-                                            <div class="staff">
-                                                <div>V.A: @character.Voice</div>
+                                                    <a asp-controller="Characters" asp-action="GetById" asp-route-id="@character.CharacterId"><h5 id="character-name">@character.Name</h5></a>
+                                                    <p class="character-role">@character.Role</p>
+                                                    <div class="staff">
+                                                        <div>V.A: @character.Voice</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                    </div>
-                                }
+                                    }
+                                </div>
+
                             </div>
-                                    
-                        </div>
                             <div class="col-lg-12 mt-5 pb-3 pt-2" style="background-color: rgba(18, 29, 49, 1)">
-                            <div class="mb-2">Recommendations</div>
-                            <div class="row">
-                                @foreach (var item in @Model.Recommendations)
-                                {
+                                <div class="mb-2">Recommendations</div>
+                                <div class="row">
+                                    @foreach (var item in @Model.Recommendations)
+                                    {
                                         <div class="col-lg-2">
                                             <a asp-controller="Animes" asp-action="GetById" asp-route-id="@item.AnimeId"><img src="~/img/Animes/@(item.AnimeImageUrl).jpg" alt="@item.AnimeName" class="recommendation-anime-img" /></a>
-                                    </div>
-                                }
+                                        </div>
+                                    }
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
                         
                     </div>
                 </div>
@@ -169,7 +171,7 @@
                     </div>
                 </div>
 
-
+                
 
             </div>
         </div>
@@ -183,13 +185,51 @@
         const favoriteIconFalse = $('.favorite-icon-false');
         const favoriteIconTrue = $('.favorite-icon-true');
 
+        const checkUserList = () => {
+
+            const CheckIfAnimeInUserListList = $.ajax({
+                type: 'GET',
+                url: '/api/AddToList/CheckUserList/@Model.Id',
+
+                success: function () {
+
+                    const responseText = CheckIfAnimeInUserListList.responseText;
+
+                    UpdateListButtons(responseText);
+                }
+            });
+
+            const checkIfAnimeInFavorites = $.ajax({
+                type: 'GET',
+                url: '/api/Favorites/Anime/@Model.Id',
+
+                success: function () {
+
+                    const responseText = checkIfAnimeInFavorites.responseText;
+
+
+                    if (responseText == "true") {
+                        favoriteIconFalse.css('display', 'none');
+                        favoriteIconTrue.css('display', 'inline')
+                    }
+                    else {
+                        favoriteIconTrue.css('display', 'none');
+                        favoriteIconFalse.css('display', 'inline');
+                    }
+
+                }
+
+            });
+
+
+        }
 
         const UpdateListButtons = (action) => {
 
             const addListElement = $('.add-list-button');
-            const watchingElement = $('.add-watching');
-            const completedElement = $('.add-completed');
-            const planElement = $('.add-planning');
+            const watchingElement = $('#watching');
+            const completedElement = $('#completed');
+            const planElement = $('#plan');
 
             switch (action) {
                 case 'Watching':
@@ -204,19 +244,21 @@
                     planElement.show();
                     break;
 
-                case "PlanToWatch":
+                case "Plan To Watch":
                     planElement.hide();
                     completedElement.show();
                     watchingElement.show();
                     break;
 
                 default:
-                    console.log("erroooor");
+                    return;
             }
 
             $(addListElement)[0].innerHTML = action;
 
         }
+
+        document.addEventListener('DOMContentLoaded', checkUserList)
 
         const Toasty = () => {
 
@@ -230,50 +272,8 @@
             toast.toast('show');
         }
 
-
-
-        const checkUserList = () => {
-
-            let CheckIfAnimeInList = $.ajax({
-                type: 'GET',
-                url: '/api/AddToList/CheckUserList/@Model.Id',
-
-                success: function () {
-
-                    const responseText = CheckIfAnimeInList.responseText;
-
-                    UpdateListButtons(responseText);
-
-                }
-            });
-
-            let checkIfAnimeInFavorites = $.ajax({
-                type: 'GET',
-                url: '/api/Favorites/Anime/@Model.Id',
-
-                success: function () {
-
-                    const responseText = checkIfAnimeInFavorites.responseText;
-
-                    console.log(responseText);
-                    if (responseText == "true") {
-                        favoriteIconFalse.css('display', 'none');
-                        favoriteIconTrue.css('display', 'inline')
-                    }
-                    else {
-                        favoriteIconTrue.css('display', 'none');
-                        avoriteIconFalse.css('display', 'inline');
-                    }
-
-                }
-
-            });
-
-
-        }
-
-        document.addEventListener('DOMContentLoaded', checkUserList);
-
+        
+        
         const AddAnimeToFavorites = () => {
 
             $.ajax({

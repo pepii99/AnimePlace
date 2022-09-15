@@ -3,6 +3,7 @@ using AnimePlace.Models;
 using AnimePlace.Services;
 using AnimePlace.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -162,7 +162,7 @@ namespace AnimePlace.Services
                 
             //}
             
-            return null;
+            return new List<Anime>();
         }
 
         // Here also big bug

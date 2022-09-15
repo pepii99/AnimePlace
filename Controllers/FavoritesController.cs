@@ -63,7 +63,7 @@ namespace AnimePlace.Controllers
 
             if (userId == null)
             {
-                return base.RedirectToAction();
+                return Ok();
             }
 
             var result = this.favoritesService.CheckAnimeFavorite(id, userId);

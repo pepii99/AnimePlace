@@ -16,7 +16,9 @@ namespace AnimePlace.Controllers
             this.addToListService = addToListService;
         }
 
-        //[HttpPost("{id:int}")]
+        
+        //TODO: Redirect user to log in page if not authorized.
+
         [HttpPost("Watching/{id}")]
         public async Task<IActionResult> AddToWatchingList(int id)
         {
@@ -24,7 +26,7 @@ namespace AnimePlace.Controllers
 
             if (userId == null)
             {
-                return NotFound();
+                return Ok();
             }
 
             await this.addToListService.GetAnimeInListStatusAsync(id, userId, "watching");
@@ -39,7 +41,7 @@ namespace AnimePlace.Controllers
 
             if (userId == null)
             {
-                return NotFound();
+                return Ok();
             }
 
             await this.addToListService.GetAnimeInListStatusAsync(id, userId, "completed");
@@ -47,17 +49,17 @@ namespace AnimePlace.Controllers
             return Ok(200);
         }
 
-        [HttpPost("PlanToWatch/{id}")]
+        [HttpPost("Plan To Watch/{id}")]
         public async Task<IActionResult> AddToPlanToWatch(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (userId == null)
             {
-                return NotFound();
+                return Ok();
             }
 
-            await this.addToListService.GetAnimeInListStatusAsync(id, userId, "plan To Watch");
+            await this.addToListService.GetAnimeInListStatusAsync(id, userId, "Plan To Watch");
 
             return Ok(200);
         }
